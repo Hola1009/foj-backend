@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.fancier.foj</groupId>
-        <artifactId>foj-modules</artifactId>
+        <artifactId>foj-common</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>foj-judge</artifactId>
+    <artifactId>foj-common-core</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

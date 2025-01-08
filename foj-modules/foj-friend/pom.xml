@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>foj-judge</artifactId>
+    <artifactId>foj-friend</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -1,36 +1,11 @@
-2025-01-04 19:37:39.867 [ main ] - [ INFO  ] [ com.fancier.friend.OjFriendApplication : 630 ] - No active profile set, falling back to 1 default profile: "default"
-2025-01-04 19:37:40.226 [ main ] - [ INFO  ] [ o.springframework.cloud.context.scope.GenericScope : 282 ] - BeanFactory id=4b2694a1-b4a4-3356-92f1-ea5acf3987f0
-2025-01-04 19:37:40.470 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 108 ] - Tomcat initialized with port(s): 9002 (http)
-2025-01-04 19:37:40.481 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-9002"]
-2025-01-04 19:37:40.481 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
-2025-01-04 19:37:40.483 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2025-01-04 19:37:40.589 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
-2025-01-04 19:37:40.589 [ main ] - [ INFO  ] [ o.s.b.w.s.c.ServletWebServerApplicationContext : 291 ] - Root WebApplicationContext: initialization completed in 707 ms
-2025-01-04 19:37:41.098 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-9002"]
-2025-01-04 19:37:41.116 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 220 ] - Tomcat started on port(s): 9002 (http) with context path ''
-2025-01-04 19:37:41.324 [ main ] - [ INFO  ] [ com.fancier.friend.OjFriendApplication : 57 ] - Started OjFriendApplication in 2.657 seconds (process running for 3.256)
-2025-01-04 19:38:08.002 [ http-nio-9002-exec-1 ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-04 19:38:08.003 [ http-nio-9002-exec-1 ] - [ INFO  ] [ org.springframework.web.servlet.DispatcherServlet : 532 ] - Initializing Servlet 'dispatcherServlet'
-2025-01-04 19:38:08.006 [ http-nio-9002-exec-1 ] - [ INFO  ] [ org.springframework.web.servlet.DispatcherServlet : 554 ] - Completed initialization in 1 ms
-2025-01-04 19:38:48.125 [ main ] - [ INFO  ] [ com.fancier.friend.OjFriendApplication : 630 ] - No active profile set, falling back to 1 default profile: "default"
-2025-01-04 19:38:48.523 [ main ] - [ INFO  ] [ o.springframework.cloud.context.scope.GenericScope : 282 ] - BeanFactory id=4b2694a1-b4a4-3356-92f1-ea5acf3987f0
-2025-01-04 19:38:48.724 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 108 ] - Tomcat initialized with port(s): 9002 (http)
-2025-01-04 19:38:48.733 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-9002"]
-2025-01-04 19:38:48.734 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
-2025-01-04 19:38:48.735 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2025-01-04 19:38:48.824 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
-2025-01-04 19:38:48.825 [ main ] - [ INFO  ] [ o.s.b.w.s.c.ServletWebServerApplicationContext : 291 ] - Root WebApplicationContext: initialization completed in 682 ms
-2025-01-04 19:38:49.359 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-9002"]
-2025-01-04 19:38:49.378 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 220 ] - Tomcat started on port(s): 9002 (http) with context path ''
-2025-01-04 19:38:49.633 [ main ] - [ INFO  ] [ com.fancier.friend.OjFriendApplication : 57 ] - Started OjFriendApplication in 2.659 seconds (process running for 3.125)
-2025-01-04 19:40:48.792 [ main ] - [ INFO  ] [ com.fancier.friend.OjFriendApplication : 630 ] - No active profile set, falling back to 1 default profile: "default"
-2025-01-04 19:40:49.166 [ main ] - [ INFO  ] [ o.springframework.cloud.context.scope.GenericScope : 282 ] - BeanFactory id=4b2694a1-b4a4-3356-92f1-ea5acf3987f0
-2025-01-04 19:40:49.414 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 108 ] - Tomcat initialized with port(s): 9002 (http)
-2025-01-04 19:40:49.424 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-9002"]
-2025-01-04 19:40:49.425 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
-2025-01-04 19:40:49.425 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2025-01-04 19:40:49.515 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
-2025-01-04 19:40:49.515 [ main ] - [ INFO  ] [ o.s.b.w.s.c.ServletWebServerApplicationContext : 291 ] - Root WebApplicationContext: initialization completed in 710 ms
-2025-01-04 19:40:50.106 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-9002"]
-2025-01-04 19:40:50.123 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 220 ] - Tomcat started on port(s): 9002 (http) with context path ''
-2025-01-04 19:40:50.361 [ main ] - [ INFO  ] [ com.fancier.friend.OjFriendApplication : 57 ] - Started OjFriendApplication in 2.758 seconds (process running for 3.284)
+2025-01-08 19:59:49.277 [ main ] - [ INFO  ] [ com.fancier.foj.friend.OjFriendApplication : 630 ] - No active profile set, falling back to 1 default profile: "default"
+2025-01-08 19:59:50.189 [ main ] - [ INFO  ] [ o.springframework.cloud.context.scope.GenericScope : 282 ] - BeanFactory id=843950f4-bc85-3f63-9dbc-fefac08b892e
+2025-01-08 19:59:50.643 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 108 ] - Tomcat initialized with port(s): 9003 (http)
+2025-01-08 19:59:50.665 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-9003"]
+2025-01-08 19:59:50.666 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2025-01-08 19:59:50.668 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-01-08 19:59:50.860 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2025-01-08 19:59:50.860 [ main ] - [ INFO  ] [ o.s.b.w.s.c.ServletWebServerApplicationContext : 291 ] - Root WebApplicationContext: initialization completed in 1547 ms
+2025-01-08 19:59:51.861 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-9003"]
+2025-01-08 19:59:51.878 [ main ] - [ INFO  ] [ o.s.boot.web.embedded.tomcat.TomcatWebServer : 220 ] - Tomcat started on port(s): 9003 (http) with context path ''
+2025-01-08 19:59:52.083 [ main ] - [ INFO  ] [ com.fancier.foj.friend.OjFriendApplication : 57 ] - Started OjFriendApplication in 4.996 seconds (process running for 5.864)
