@@ -37,5 +37,9 @@
             <groupId>com.fancier.foj</groupId>
             <artifactId>foj-common-swagger</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fancier.foj</groupId>
+            <artifactId>foj-common-security</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -28,6 +28,7 @@
         <springdoc-openapi.version>2.2.0</springdoc-openapi.version>
         <revision>1.0-SNAPSHOT</revision>
     </properties>
+
     <dependencies>
         <!-- bootstrap 启动器 -->
         <dependency>
@@ -40,8 +41,16 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.fancier.foj</groupId>
+                <artifactId>foj-common-security</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.fancier.foj</groupId>
                 <artifactId>foj-common-core</artifactId>

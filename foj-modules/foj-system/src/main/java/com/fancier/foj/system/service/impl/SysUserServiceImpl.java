@@ -11,6 +11,7 @@ import com.fancier.foj.system.domain.sysUser.SysUser;
 import com.fancier.foj.system.domain.sysUser.SysUserDTO;
 import com.fancier.foj.system.mapper.SysUserMapper;
 import com.fancier.foj.system.service.SysUserService;
+import com.fancier.foj.system.utils.BCryptUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +34,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
 
         LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<SysUser>()
                 .select(SysUser::getAccount, SysUser::getPassword)
-                .eq(StringUtils.isNotBlank(account), SysUser::getAccount, account)
-                .eq(StringUtils.isNotBlank(password), SysUser::getPassword, password);
+                .eq(StringUtils.isNotBlank(account), SysUser::getAccount, account);
 
         SysUser sysUser = sysUserMapper.selectOne(queryWrapper);
 
         ThrowUtils.throwIf(Objects.isNull(sysUser), new BusinessException(ResultCode.FAILED_LOGIN));
+
+        ThrowUtils.throwIf(!BCryptUtils.matchesPassword(password, sysUser.getPassword()),
+                new BusinessException(ResultCode.FAILED_LOGIN));
 
         return Result.success();
     }

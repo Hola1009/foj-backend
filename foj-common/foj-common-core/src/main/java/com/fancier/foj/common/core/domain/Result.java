@@ -16,14 +16,18 @@ public class Result  {
     }
 
     public static  Result success() {
-        return new Result(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), null);
+        return success(null);
     }
 
     public static  Result failure() {
-        return new Result(ResultCode.ERROR.getCode(), ResultCode.ERROR.getMessage(), null);
+        return failure(ResultCode.ERROR);
+    }
+
+    public static  Result failure(Integer code, String message) {
+        return new Result(code, message, null);
     }
 
     public static  Result failure(ResultCode resultCode) {
-        return new Result(resultCode.getCode(), resultCode.getMessage(), null);
+        return failure(resultCode.getCode(), resultCode.getMessage());
     }
 }

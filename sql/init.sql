@@ -6,7 +6,7 @@ use foj_dev;
 create table if not exists `sys_user` (
     `id` bigint(20) unsigned not null comment '主键',
     `account` varchar(20) not null comment '账号',
-    `password` varchar(20) not null comment '密码',
+    `password` char(60) not null comment '密码',
     `username` varchar(20) not null comment '用户名',
 
     `create_time` datetime not null default current_timestamp comment '创建时间',
