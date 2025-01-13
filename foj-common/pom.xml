@@ -15,6 +15,7 @@
         <module>foj-common-core</module>
         <module>foj-common-swagger</module>
         <module>foj-common-security</module>
+        <module>foj-common-redis</module>
     </modules>
 
     <properties>

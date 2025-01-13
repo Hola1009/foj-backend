@@ -42,6 +42,10 @@
             <artifactId>foj-common-security</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.fancier.foj</groupId>
+            <artifactId>foj-common-redis</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

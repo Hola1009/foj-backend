@@ -1,0 +1,2 @@
+com.fancier.foj.common.redis.config.RedisConfigure
+com.fancier.foj.common.redis.service.RedisService
