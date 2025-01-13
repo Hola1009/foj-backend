@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: foj-gateway
+  profiles:
+    active: local
+  cloud:
+    nacos:
+      discovery:
+        namespace: b0a54dc4-aa37-4e7c-8445-977694363770
+        server-addr: http://localhost:8848
+      config:
+        namespace: b0a54dc4-aa37-4e7c-8445-977694363770
+        server-addr: http://localhost:8848
+        file-extension: yaml
