@@ -16,7 +16,7 @@
     <modules>
         <module>foj-modules</module>
         <module>foj-common</module>
-        <module>foj-gataway</module>
+        <module>foj-gateway</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -28,6 +28,7 @@
         <lombok.version>1.18.34</lombok.version>
         <springdoc-openapi.version>2.2.0</springdoc-openapi.version>
         <fastjson2.version>2.0.43</fastjson2.version>
+        <jwt.version>0.9.1</jwt.version>
         <revision>1.0-SNAPSHOT</revision>
     </properties>
 
@@ -69,6 +70,12 @@
                 <groupId>com.fancier.foj</groupId>
                 <artifactId>foj-common-swagger</artifactId>
                 <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
             </dependency>
 
             <!-- SpringCloud Alibaba 微服务 -->
