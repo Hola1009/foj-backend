@@ -13,6 +13,6 @@ public enum UserIdentity {
     ADMIN(2, "管理员"),
     ORDINARY(1, "普通用户");
 
-    private final int value;
+    private final Integer value;
     private final String desc;
 }
