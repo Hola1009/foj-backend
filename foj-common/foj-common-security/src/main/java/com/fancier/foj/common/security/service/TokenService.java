@@ -7,6 +7,7 @@ import com.fancier.foj.common.redis.service.RedisService;
 import com.fancier.foj.common.security.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * @author <a href="https://github.com/hola1009">fancier</a>
  **/
 @Service
+@RefreshScope
 @RequiredArgsConstructor
 public class TokenService {
 
