@@ -1,4 +1,4 @@
-package com.fancier.foj.common.core.enums;
+package com.fancier.foj.common.core.constant.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

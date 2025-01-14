@@ -2,7 +2,7 @@ package com.fancier.foj.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.fancier.foj.common.core.domain.Result;
-import com.fancier.foj.common.core.enums.ResultCode;
+import com.fancier.foj.common.core.constant.enums.ResultCode;
 import com.fancier.foj.common.core.exception.BusinessException;
 import com.fancier.foj.common.core.utils.ThrowUtils;
 import com.fancier.foj.system.domain.sysUser.SysUser;

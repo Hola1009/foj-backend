@@ -1,6 +1,6 @@
 package com.fancier.foj.common.core.exception;
 
-import com.fancier.foj.common.core.enums.ResultCode;
+import com.fancier.foj.common.core.constant.enums.ResultCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

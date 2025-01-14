@@ -1,6 +1,6 @@
 package com.fancier.foj.common.core.domain;
 
-import com.fancier.foj.common.core.enums.ResultCode;
+import com.fancier.foj.common.core.constant.enums.ResultCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
