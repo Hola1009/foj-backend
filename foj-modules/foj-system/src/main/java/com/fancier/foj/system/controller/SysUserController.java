@@ -24,7 +24,7 @@ import java.util.Objects;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "管理员接口")
-@RequestMapping("/sys/user")
+@RequestMapping("/user")
 public class SysUserController {
 
     private final SysUserService sysUserService;
