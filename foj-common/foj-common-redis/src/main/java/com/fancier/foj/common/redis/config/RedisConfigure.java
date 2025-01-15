@@ -1,6 +1,8 @@
 package com.fancier.foj.common.redis.config;
 
 import com.fancier.foj.common.redis.JsonRedisSerializer;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @author <a href="https://github.com/hola1009">fancier</a>
  **/
 @Configuration
+@AutoConfigureBefore(RedisAutoConfiguration.class)
 @SuppressWarnings({"all"})
 public class RedisConfigure extends CachingConfigurerSupport {
     @Bean
