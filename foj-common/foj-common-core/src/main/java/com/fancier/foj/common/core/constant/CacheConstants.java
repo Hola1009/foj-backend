@@ -6,4 +6,6 @@ package com.fancier.foj.common.core.constant;
 public interface CacheConstants {
     String LOGIN_TOKEN_PREFIX = "loginToken:";
     Long EXP = 720L;
+
+    Long REFRESH_TIME = 180L;
 }

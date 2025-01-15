@@ -11,6 +11,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -46,5 +47,16 @@ public class TokenService {
         redisService.setCacheObject(key, loginUserDTO, CacheConstants.EXP, TimeUnit.MINUTES);
 
         return token;
+    }
+
+    public void extendToken(String token) {
+
+        String userId = JwtUtils.getUserId(token, secret);
+        String key = CacheConstants.LOGIN_TOKEN_PREFIX + userId;
+
+        Long expire = redisService.getExpire(key, TimeUnit.MINUTES);
+        if (Objects.nonNull(expire) && expire < CacheConstants.REFRESH_TIME) {
+            redisService.expire(key, CacheConstants.EXP, TimeUnit.MINUTES);
+        }
     }
 }

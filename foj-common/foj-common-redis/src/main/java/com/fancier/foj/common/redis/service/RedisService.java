@@ -186,5 +186,9 @@ public class RedisService {
     public Long deleteCacheMapValue(final String key, final String hKey) {
         return redisTemplate.opsForHash().delete(key, hKey);
     }
+
+    public Long getExpire(final String key, final TimeUnit unit) {
+        return redisTemplate.getExpire(key, unit);
+    }
 }
 
