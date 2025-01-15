@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginUser {
+public class LoginUserDTO {
     private Integer identity; // 1 表示普通用户, 2 表示 管理员用户
 
 

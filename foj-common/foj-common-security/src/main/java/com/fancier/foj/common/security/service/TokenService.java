@@ -2,7 +2,7 @@ package com.fancier.foj.common.security.service;
 
 import com.fancier.foj.common.core.constant.CacheConstants;
 import com.fancier.foj.common.core.constant.JwtConstants;
-import com.fancier.foj.common.core.domain.LoginUser;
+import com.fancier.foj.common.core.domain.LoginUserDTO;
 import com.fancier.foj.common.redis.service.RedisService;
 import com.fancier.foj.common.core.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
@@ -38,12 +38,12 @@ public class TokenService {
         String token = JwtUtils.createToken(claims, secret);
 
         // 1 表示普通用户, 2 表示 管理员用
-        LoginUser loginUser = new LoginUser(identity);
+        LoginUserDTO loginUserDTO = new LoginUserDTO(identity);
 
         // 将用户登录信息存入 redis, 过期时间为 720 分钟
         // 以用户唯一标识作为 key , 因为 userId 是根据雪花算法生成的, 所以可以作为唯一 id
         String key = CacheConstants.LOGIN_TOKEN_PREFIX + userId;
-        redisService.setCacheObject(key, loginUser, CacheConstants.EXP, TimeUnit.MINUTES);
+        redisService.setCacheObject(key, loginUserDTO, CacheConstants.EXP, TimeUnit.MINUTES);
 
         return token;
     }
