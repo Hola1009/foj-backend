@@ -4,7 +4,7 @@ import com.fancier.foj.common.core.constant.CacheConstants;
 import com.fancier.foj.common.core.constant.JwtConstants;
 import com.fancier.foj.common.core.domain.LoginUser;
 import com.fancier.foj.common.redis.service.RedisService;
-import com.fancier.foj.common.security.utils.JwtUtils;
+import com.fancier.foj.common.core.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

@@ -21,19 +21,12 @@
 
         <dependency>
             <groupId>com.fancier.foj</groupId>
-            <artifactId>foj-common-security</artifactId>
-            <exclusions>
-                <!-- Spring Cloud Gateway 项目中不能使用 spring-boot-starter-web 依赖-->
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>foj-common-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.fancier.foj</groupId>
-            <artifactId>foj-common-core</artifactId>
+            <artifactId>foj-common-redis</artifactId>
         </dependency>
 
         <!-- SpringCloud Gateway -->

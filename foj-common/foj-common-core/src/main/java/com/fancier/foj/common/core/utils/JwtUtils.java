@@ -1,4 +1,4 @@
-package com.fancier.foj.common.security.utils;
+package com.fancier.foj.common.core.utils;
 
 import com.fancier.foj.common.core.constant.JwtConstants;
 import io.jsonwebtoken.Claims;

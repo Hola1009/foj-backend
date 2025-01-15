@@ -10,7 +10,7 @@ import com.fancier.foj.common.core.constant.enums.UserIdentity;
 import com.fancier.foj.common.core.domain.LoginUser;
 import com.fancier.foj.common.core.domain.Result;
 import com.fancier.foj.common.redis.service.RedisService;
-import com.fancier.foj.common.security.utils.JwtUtils;
+import com.fancier.foj.common.core.utils.JwtUtils;
 import com.fancier.foj.gateway.properties.IgnoreWhiteProperties;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
