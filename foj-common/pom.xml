@@ -16,6 +16,7 @@
         <module>foj-common-swagger</module>
         <module>foj-common-security</module>
         <module>foj-common-redis</module>
+        <module>foj-common-mybatis</module>
     </modules>
 
     <properties>

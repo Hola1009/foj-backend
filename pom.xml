@@ -57,6 +57,12 @@
 
             <dependency>
                 <groupId>com.fancier.foj</groupId>
+                <artifactId>foj-common-mybatis</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fancier.foj</groupId>
                 <artifactId>foj-common-redis</artifactId>
                 <version>${revision}</version>
             </dependency>
