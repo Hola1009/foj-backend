@@ -2,9 +2,9 @@ package com.fancier.foj.system.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.fancier.foj.common.core.domain.Result;
+import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.system.domain.sysUser.SysUser;
-import com.fancier.foj.system.domain.sysUser.SysUserDTO;
+import com.fancier.foj.system.domain.sysUser.dto.SysUserDTO;
 
 /**
 * @author Fancier

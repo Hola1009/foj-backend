@@ -1,6 +1,6 @@
 package com.fancier.foj.system.controller;
 
-import com.fancier.foj.common.core.domain.Result;
+import com.fancier.foj.common.core.domain.vo.Result;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

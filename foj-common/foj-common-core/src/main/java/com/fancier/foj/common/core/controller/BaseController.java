@@ -1,6 +1,6 @@
 package com.fancier.foj.common.core.controller;
 
-import com.fancier.foj.common.core.domain.Result;
+import com.fancier.foj.common.core.domain.vo.Result;
 
 /**
  *

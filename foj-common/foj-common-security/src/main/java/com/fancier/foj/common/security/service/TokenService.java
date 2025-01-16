@@ -2,7 +2,7 @@ package com.fancier.foj.common.security.service;
 
 import com.fancier.foj.common.core.constant.CacheConstants;
 import com.fancier.foj.common.core.constant.JwtConstants;
-import com.fancier.foj.common.core.domain.LoginUserDTO;
+import com.fancier.foj.common.core.domain.dto.LoginUserDTO;
 import com.fancier.foj.common.redis.service.RedisService;
 import com.fancier.foj.common.core.utils.JwtUtils;
 import lombok.RequiredArgsConstructor;

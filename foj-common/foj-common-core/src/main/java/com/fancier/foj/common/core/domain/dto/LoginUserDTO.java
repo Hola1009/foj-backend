@@ -1,4 +1,4 @@
-package com.fancier.foj.common.core.domain;
+package com.fancier.foj.common.core.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -2,13 +2,13 @@ package com.fancier.foj.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.fancier.foj.common.core.controller.BaseController;
-import com.fancier.foj.common.core.domain.Result;
+import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import com.fancier.foj.common.security.exception.BusinessException;
 import com.fancier.foj.common.security.utils.ThrowUtils;
 import com.fancier.foj.system.domain.sysUser.SysUser;
-import com.fancier.foj.system.domain.sysUser.SysUserDTO;
-import com.fancier.foj.system.domain.sysUser.SysUserVO;
+import com.fancier.foj.system.domain.sysUser.dto.SysUserDTO;
+import com.fancier.foj.system.domain.sysUser.vo.SysUserVO;
 import com.fancier.foj.system.service.SysUserService;
 import com.fancier.foj.system.utils.BCryptUtils;
 import io.swagger.v3.oas.annotations.Operation;

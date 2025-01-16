@@ -1,4 +1,4 @@
-package com.fancier.foj.system.domain.sysUser;
+package com.fancier.foj.system.domain.sysUser.vo;
 
 import lombok.Data;
 
