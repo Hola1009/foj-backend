@@ -1,14 +1,16 @@
 package com.fancier.foj.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.fancier.foj.common.core.controller.BaseController;
 import com.fancier.foj.common.core.domain.Result;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
-import com.fancier.foj.common.core.exception.BusinessException;
-import com.fancier.foj.common.core.utils.ThrowUtils;
+import com.fancier.foj.common.security.exception.BusinessException;
+import com.fancier.foj.common.security.utils.ThrowUtils;
 import com.fancier.foj.system.domain.sysUser.SysUser;
 import com.fancier.foj.system.domain.sysUser.SysUserDTO;
 import com.fancier.foj.system.domain.sysUser.SysUserVO;
 import com.fancier.foj.system.service.SysUserService;
+import com.fancier.foj.system.utils.BCryptUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -25,7 +27,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Tag(name = "管理员接口")
 @RequestMapping("/user")
-public class SysUserController {
+public class SysUserController extends BaseController {
 
     private final SysUserService sysUserService;
 
@@ -44,13 +46,28 @@ public class SysUserController {
     @ApiResponse(responseCode = "2000", description = "业务繁忙请稍后重试")
     @ApiResponse(responseCode = "3103", description = "用户名或密码错误")
     public Result add(@RequestBody SysUserDTO userRegister) {
+        // 校验账户是否存在
+        SysUser one = sysUserService.getOne(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getAccount, userRegister.getAccount()));
 
+        ThrowUtils.throwIf(Objects.nonNull(one),
+                new BusinessException(ResultCode.FILED_USER_EXISTS));
+
+        // 属性拷贝
         SysUser sysUser = new SysUser();
         BeanUtils.copyProperties(userRegister, sysUser);
 
-        sysUserService.save(sysUser);
+        // 进行密码加密
+        String password = userRegister.getPassword();
+        sysUser.setPassword(BCryptUtils.encryptPassword(password));
 
-        return Result.success();
+        // 设置创建人
+        sysUser.setCreateBy(1L);
+        sysUser.setUpdateBy(1L);
+        // 插入数据库
+        boolean isSaved = sysUserService.save(sysUser);
+
+        return toResult(isSaved);
     }
 
     @PutMapping("/update")

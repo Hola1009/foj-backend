@@ -1,4 +1,4 @@
-package com.fancier.foj.common.core.exception;
+package com.fancier.foj.common.security.exception;
 
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import lombok.AllArgsConstructor;

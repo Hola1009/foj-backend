@@ -16,7 +16,7 @@ public enum ResultCode {
     FAILED_PARAMS_VALIDATE (3002, "参数校验失败"),
     FAILED_NOT_EXISTS (3003, "资源不存在"),
     FAILED_ALREADY_EXISTS (3004, "资源已存在"),
-    AILED_USER_EXISTS (3101, "⽤⼾已存在"),
+    FILED_USER_EXISTS (3101, "⽤⼾已存在"),
     FAILED_USER_NOT_EXISTS (3102, "⽤⼾不存在"),
     FAILED_LOGIN (3103, "⽤⼾名或密码错误"),
     FAILED_USER_BANNED (3104, "您已被列⼊⿊名单, 请联系管理员.");

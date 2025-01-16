@@ -2,7 +2,7 @@ package com.fancier.foj.common.security.handler;
 
 
 import com.fancier.foj.common.core.domain.Result;
-import com.fancier.foj.common.core.exception.BusinessException;
+import com.fancier.foj.common.security.exception.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

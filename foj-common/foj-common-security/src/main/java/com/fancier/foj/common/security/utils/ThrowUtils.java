@@ -1,7 +1,8 @@
-package com.fancier.foj.common.core.utils;
+package com.fancier.foj.common.security.utils;
 
 import com.fancier.foj.common.core.constant.enums.ResultCode;
-import com.fancier.foj.common.core.exception.BusinessException;
+import com.fancier.foj.common.security.exception.BusinessException;
+
 
 /**
  * 抛异常工具类
