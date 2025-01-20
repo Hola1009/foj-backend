@@ -1,4 +1,4 @@
-package com.fancier.foj.system.domain.sysUser.dto;
+package com.fancier.foj.system.domain.admin.dto;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  */
 
 @Data
-public class SysUserDTO {
+public class AdminDTO {
     private Long id;
 
     private String account;

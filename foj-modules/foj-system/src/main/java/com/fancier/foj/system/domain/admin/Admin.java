@@ -1,4 +1,4 @@
-package com.fancier.foj.system.domain.sysUser;
+package com.fancier.foj.system.domain.admin;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @TableName(value ="sys_user")
 @Data
-public class SysUser extends BaseEntity {
+public class Admin extends BaseEntity {
     @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 

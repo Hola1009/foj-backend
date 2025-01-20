@@ -12,10 +12,10 @@ import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.common.security.exception.BusinessException;
 import com.fancier.foj.common.security.service.TokenService;
 import com.fancier.foj.common.security.utils.ThrowUtils;
-import com.fancier.foj.system.domain.sysUser.SysUser;
-import com.fancier.foj.system.domain.sysUser.dto.SysUserDTO;
-import com.fancier.foj.system.mapper.SysUserMapper;
-import com.fancier.foj.system.service.SysUserService;
+import com.fancier.foj.system.domain.admin.Admin;
+import com.fancier.foj.system.domain.admin.dto.AdminDTO;
+import com.fancier.foj.system.mapper.AdminMapper;
+import com.fancier.foj.system.service.AdminService;
 import com.fancier.foj.system.utils.BCryptUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -31,32 +31,32 @@ import java.util.Objects;
 @Service
 @RefreshScope
 @RequiredArgsConstructor
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
-    implements SysUserService {
+public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin>
+    implements AdminService {
 
-    private final SysUserMapper sysUserMapper;
+    private final AdminMapper adminMapper;
 
     private final TokenService tokenService;
 
     @Override
-    public Result login(SysUserDTO userLogin) {
+    public Result login(AdminDTO userLogin) {
         String account = userLogin.getAccount();
         String password = userLogin.getPassword();
 
-        LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<SysUser>()
-                .select(SysUser::getPassword, SysUser::getId, SysUser::getUsername)
-                .eq(StringUtils.isNotBlank(account), SysUser::getAccount, account);
+        LambdaQueryWrapper<Admin> queryWrapper = new LambdaQueryWrapper<Admin>()
+                .select(Admin::getPassword, Admin::getId, Admin::getUsername)
+                .eq(StringUtils.isNotBlank(account), Admin::getAccount, account);
 
-        SysUser sysUser = sysUserMapper.selectOne(queryWrapper);
+        Admin admin = adminMapper.selectOne(queryWrapper);
 
         // 未查询到用户
-        ThrowUtils.throwIf(Objects.isNull(sysUser), new BusinessException(ResultCode.FAILED_LOGIN));
+        ThrowUtils.throwIf(Objects.isNull(admin), new BusinessException(ResultCode.FAILED_LOGIN));
 
         // 密码校验未通过
-        ThrowUtils.throwIf(!BCryptUtils.matchesPassword(password, sysUser.getPassword()),
+        ThrowUtils.throwIf(!BCryptUtils.matchesPassword(password, admin.getPassword()),
                 new BusinessException(ResultCode.FAILED_LOGIN));
 
-        String token = tokenService.createToken(sysUser.getId(), sysUser.getUsername(), UserIdentity.ADMIN.getValue());
+        String token = tokenService.createToken(admin.getId(), admin.getUsername(), UserIdentity.ADMIN.getValue());
 
         return Result.success(token);
     }

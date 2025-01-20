@@ -8,10 +8,10 @@ import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import com.fancier.foj.common.security.exception.BusinessException;
 import com.fancier.foj.common.security.utils.ThrowUtils;
-import com.fancier.foj.system.domain.sysUser.SysUser;
-import com.fancier.foj.system.domain.sysUser.dto.SysUserDTO;
-import com.fancier.foj.system.domain.sysUser.vo.SysUserVO;
-import com.fancier.foj.system.service.SysUserService;
+import com.fancier.foj.system.domain.admin.Admin;
+import com.fancier.foj.system.domain.admin.dto.AdminDTO;
+import com.fancier.foj.system.domain.admin.vo.AdminVO;
+import com.fancier.foj.system.service.AdminService;
 import com.fancier.foj.system.utils.BCryptUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -28,18 +28,18 @@ import java.util.Objects;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "管理员接口")
-@RequestMapping("/user")
-public class SysUserController extends BaseController {
+@RequestMapping("/admin")
+public class AdminController extends BaseController {
 
-    private final SysUserService sysUserService;
+    private final AdminService adminService;
 
     @PostMapping("/login")
     @Operation(summary = "登录", description = "根据提供信息登录")
     @ApiResponse(responseCode = "1000", description = "操作成功")
     @ApiResponse(responseCode = "2000", description = "业务繁忙请稍后重试")
     @ApiResponse(responseCode = "3103", description = "用户名或密码错误")
-    public Result login(@RequestBody SysUserDTO userLogin) {
-        return sysUserService.login(userLogin);
+    public Result login(@RequestBody AdminDTO userLogin) {
+        return adminService.login(userLogin);
     }
 
     @PostMapping("/add")
@@ -47,27 +47,27 @@ public class SysUserController extends BaseController {
     @ApiResponse(responseCode = "1000", description = "操作成功")
     @ApiResponse(responseCode = "2000", description = "业务繁忙请稍后重试")
     @ApiResponse(responseCode = "3103", description = "用户名或密码错误")
-    public Result add(@RequestBody SysUserDTO userRegister) {
+    public Result add(@RequestBody AdminDTO userRegister) {
         // 校验账户是否存在
-        SysUser one = sysUserService.getOne(new LambdaQueryWrapper<SysUser>()
-                .eq(SysUser::getAccount, userRegister.getAccount()));
+        Admin one = adminService.getOne(new LambdaQueryWrapper<Admin>()
+                .eq(Admin::getAccount, userRegister.getAccount()));
 
         ThrowUtils.throwIf(Objects.nonNull(one),
                 new BusinessException(ResultCode.FILED_USER_EXISTS));
 
         // 属性拷贝
-        SysUser sysUser = new SysUser();
-        BeanUtils.copyProperties(userRegister, sysUser);
+        Admin admin = new Admin();
+        BeanUtils.copyProperties(userRegister, admin);
 
         // 进行密码加密
         String password = userRegister.getPassword();
-        sysUser.setPassword(BCryptUtils.encryptPassword(password));
+        admin.setPassword(BCryptUtils.encryptPassword(password));
 
         // 设置创建人
-        sysUser.setCreateBy(1L);
-        sysUser.setUpdateBy(1L);
+        admin.setCreateBy(1L);
+        admin.setUpdateBy(1L);
         // 插入数据库
-        boolean isSaved = sysUserService.save(sysUser);
+        boolean isSaved = adminService.save(admin);
 
         return toResult(isSaved);
     }
@@ -78,12 +78,12 @@ public class SysUserController extends BaseController {
     @ApiResponse(responseCode = "2000", description = "业务繁忙请稍后重试")
     @ApiResponse(responseCode = "3103", description = "用户名或密码错误")
     @ApiResponse(responseCode = "3101", description = "⽤⼾不存在")
-    public Result update(@RequestBody SysUserDTO userRegister) {
+    public Result update(@RequestBody AdminDTO userRegister) {
 
-        SysUser sysUser = new SysUser();
-        BeanUtils.copyProperties(userRegister, sysUser);
+        Admin admin = new Admin();
+        BeanUtils.copyProperties(userRegister, admin);
 
-        boolean b = sysUserService.updateById(sysUser);
+        boolean b = adminService.updateById(admin);
 
         ThrowUtils.throwIf(b, new BusinessException(ResultCode.FAILED_USER_NOT_EXISTS));
 
@@ -98,7 +98,7 @@ public class SysUserController extends BaseController {
     @ApiResponse(responseCode = "1000", description = "成功删除⽤⼾")
     @ApiResponse(responseCode = "2000", description = "服务繁忙请稍后重试")
     public Result delete(@PathVariable Long userId) {
-        sysUserService.removeById(userId);
+        adminService.removeById(userId);
         return Result.success();
     }
 
@@ -115,14 +115,14 @@ public class SysUserController extends BaseController {
     public Result detail(Long userId, @RequestParam(required = false) String ignoreSex){
         // 参数校验
         // 根据查询字段查询
-        SysUser sysUser = sysUserService.getOne(new LambdaQueryWrapper<SysUser>()
-                .eq(Objects.nonNull(userId), SysUser::getId, userId));
+        Admin admin = adminService.getOne(new LambdaQueryWrapper<Admin>()
+                .eq(Objects.nonNull(userId), Admin::getId, userId));
 
         // 脱敏
-        SysUserVO sysUserVO = new SysUserVO();
-        BeanUtils.copyProperties(sysUser, sysUserVO);
+        AdminVO adminVO = new AdminVO();
+        BeanUtils.copyProperties(admin, adminVO);
 
-        return Result.success(sysUserVO);
+        return Result.success(adminVO);
     }
 
     /**
@@ -133,6 +133,6 @@ public class SysUserController extends BaseController {
         if (StrUtil.isNotEmpty(token) && token.startsWith(HttpConstants.PREFIX)) {
             token = token.replaceFirst(HttpConstants.PREFIX, StrUtil.EMPTY);
         }
-        return sysUserService.getUserinfo(token);
+        return adminService.getUserinfo(token);
     }
 }
