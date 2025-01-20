@@ -69,6 +69,11 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin>
         return Result.success(loginUserVO);
     }
 
+    @Override
+    public Boolean logout(String token) {
+        return tokenService.removeLoginUser(token);
+    }
+
 }
 
 

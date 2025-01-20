@@ -130,9 +130,23 @@ public class AdminController extends BaseController {
      */
     @GetMapping("/info")
     public Result getUserinfo(@RequestHeader(HttpConstants.AUTHENTICATION) String token) {
+        token = getToken(token);
+        return adminService.getUserinfo(token);
+    }
+
+    @DeleteMapping("/logout")
+    public Result logout(@RequestHeader(HttpConstants.AUTHENTICATION) String token) {
+        token = getToken(token);
+        return toResult(adminService.logout(token));
+    }
+
+    /**
+     * 去除 token 前缀
+     */
+    private String getToken(String token) {
         if (StrUtil.isNotEmpty(token) && token.startsWith(HttpConstants.PREFIX)) {
             token = token.replaceFirst(HttpConstants.PREFIX, StrUtil.EMPTY);
         }
-        return adminService.getUserinfo(token);
+        return token;
     }
 }

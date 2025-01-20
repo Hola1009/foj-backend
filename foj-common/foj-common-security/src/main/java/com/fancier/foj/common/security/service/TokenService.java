@@ -68,13 +68,25 @@ public class TokenService {
      * 解析 token 获取用户信息
      */
     public LoginUser getUserinfo(String token) {
+
+        String key = getTokenKey(token);
+
+        return redisService.getCacheObject(key, LoginUser.class);
+    }
+
+    public Boolean removeLoginUser(String token) {
+
+        String key = getTokenKey(token);
+
+        return redisService.deleteObject(key);
+    }
+
+    private String getTokenKey(String token) {
         String userId = JwtUtils.getUserId(token, secret);
 
         ThrowUtils.throwIf(StrUtil.isBlankIfStr(userId),
                 new BusinessException(ResultCode.FAILED_USER_NOT_EXISTS));
 
-        String key = CacheConstants.LOGIN_TOKEN_PREFIX + userId;
-
-        return redisService.getCacheObject(key, LoginUser.class);
+        return CacheConstants.LOGIN_TOKEN_PREFIX + userId;
     }
 }

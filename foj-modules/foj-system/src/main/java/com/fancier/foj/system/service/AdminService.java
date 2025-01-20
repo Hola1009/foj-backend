@@ -18,4 +18,9 @@ public interface AdminService extends IService<Admin> {
      * 获取用户信息
      */
     Result getUserinfo(String token);
+
+    /**
+     * 退出登录
+     */
+    Boolean logout(String token);
 }
