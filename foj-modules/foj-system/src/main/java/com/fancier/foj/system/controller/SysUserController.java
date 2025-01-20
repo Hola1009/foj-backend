@@ -1,6 +1,8 @@
 package com.fancier.foj.system.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.fancier.foj.common.core.constant.HttpConstants;
 import com.fancier.foj.common.core.controller.BaseController;
 import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
@@ -121,5 +123,16 @@ public class SysUserController extends BaseController {
         BeanUtils.copyProperties(sysUser, sysUserVO);
 
         return Result.success(sysUserVO);
+    }
+
+    /**
+     * 获取当前用户信息
+     */
+    @GetMapping("/info")
+    public Result getUserinfo(@RequestHeader(HttpConstants.AUTHENTICATION) String token) {
+        if (StrUtil.isNotEmpty(token) && token.startsWith(HttpConstants.PREFIX)) {
+            token = token.replaceFirst(HttpConstants.PREFIX, StrUtil.EMPTY);
+        }
+        return sysUserService.getUserinfo(token);
     }
 }

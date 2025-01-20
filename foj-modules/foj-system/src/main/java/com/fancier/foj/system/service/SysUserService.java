@@ -14,4 +14,8 @@ import com.fancier.foj.system.domain.sysUser.dto.SysUserDTO;
 public interface SysUserService extends IService<SysUser> {
     Result login(SysUserDTO userLogin);
 
+    /**
+     * 获取用户信息
+     */
+    Result getUserinfo(String token);
 }

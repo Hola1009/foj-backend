@@ -7,7 +7,7 @@ import com.fancier.foj.common.core.constant.CacheConstants;
 import com.fancier.foj.common.core.constant.HttpConstants;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import com.fancier.foj.common.core.constant.enums.UserIdentity;
-import com.fancier.foj.common.core.domain.dto.LoginUserDTO;
+import com.fancier.foj.common.core.domain.dto.LoginUser;
 import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.common.redis.service.RedisService;
 import com.fancier.foj.common.core.utils.JwtUtils;
@@ -92,7 +92,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         //token 是正确的 并且没有过期
         //判断redis存储  关于用户身份认证的信息是否是对的
         //判断当前请求 请求的是C端功能（只有C端用户可以请求）  还是B端功能  （只有管路员可以请求）
-        LoginUserDTO user = redisService.getCacheObject(getTokenKey(userId), LoginUserDTO.class);
+        LoginUser user = redisService.getCacheObject(getTokenKey(userId), LoginUser.class);
         if (url.contains(HttpConstants.SYSTEM_URL_PREFIX) && !UserIdentity.ADMIN.getValue().equals(user.getIdentity())) {
             return unauthorizedResponse(exchange, "令牌验证失败");
         }

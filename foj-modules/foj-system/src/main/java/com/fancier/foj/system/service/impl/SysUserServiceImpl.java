@@ -1,14 +1,17 @@
 package com.fancier.foj.system.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import com.fancier.foj.common.core.constant.enums.UserIdentity;
+import com.fancier.foj.common.core.domain.dto.LoginUser;
+import com.fancier.foj.common.core.domain.vo.LoginUserVO;
 import com.fancier.foj.common.core.domain.vo.Result;
 import com.fancier.foj.common.security.exception.BusinessException;
-import com.fancier.foj.common.security.utils.ThrowUtils;
 import com.fancier.foj.common.security.service.TokenService;
+import com.fancier.foj.common.security.utils.ThrowUtils;
 import com.fancier.foj.system.domain.sysUser.SysUser;
 import com.fancier.foj.system.domain.sysUser.dto.SysUserDTO;
 import com.fancier.foj.system.mapper.SysUserMapper;
@@ -41,7 +44,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
         String password = userLogin.getPassword();
 
         LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<SysUser>()
-                .select(SysUser::getPassword, SysUser::getId)
+                .select(SysUser::getPassword, SysUser::getId, SysUser::getUsername)
                 .eq(StringUtils.isNotBlank(account), SysUser::getAccount, account);
 
         SysUser sysUser = sysUserMapper.selectOne(queryWrapper);
@@ -53,9 +56,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
         ThrowUtils.throwIf(!BCryptUtils.matchesPassword(password, sysUser.getPassword()),
                 new BusinessException(ResultCode.FAILED_LOGIN));
 
-        String token = tokenService.createToken(sysUser.getId(), UserIdentity.ADMIN.getValue());
+        String token = tokenService.createToken(sysUser.getId(), sysUser.getUsername(), UserIdentity.ADMIN.getValue());
 
         return Result.success(token);
+    }
+
+    @Override
+    public Result getUserinfo(String token) {
+        LoginUser userinfo = tokenService.getUserinfo(token);
+        LoginUserVO loginUserVO = new LoginUserVO();
+        BeanUtil.copyProperties(userinfo, loginUserVO);
+        return Result.success(loginUserVO);
     }
 
 }

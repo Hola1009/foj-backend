@@ -1,4 +1,4 @@
-package com.fancier.foj.common.core.domain.dto;
+package com.fancier.foj.common.core.domain.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,8 +12,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginUserDTO {
-    private Integer identity; // 1 表示普通用户, 2 表示 管理员用户
-
-
+public class LoginUserVO {
+    private String username;
 }
