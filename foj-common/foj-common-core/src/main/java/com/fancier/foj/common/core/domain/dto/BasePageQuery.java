@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BasePageQuery {
-    private Integer pageNum;
-    private Integer pageSize;
+    private Integer pageNum = 1;
+    private Integer pageSize = 10;
 }
