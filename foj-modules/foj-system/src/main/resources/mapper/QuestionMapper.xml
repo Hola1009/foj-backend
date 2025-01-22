@@ -21,5 +21,28 @@
             <result property="updateBy" column="update_by" jdbcType="BIGINT"/>
             <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
     </resultMap>
-
+        <select id="selectQuestionList" resultType="com.fancier.foj.system.domain.question.vo.QuestionVO">
+            SELECT
+                tq.id,
+                tq.title,
+                tq.difficulty,
+                ts.username as creator_name,
+                tq.create_time
+            FROM
+                tb_question tq
+            left join
+                sys_user ts
+            on
+            tq.create_by = ts.id
+            <where>
+                <if test="difficulty != null ">
+                    AND difficulty = #{difficulty}
+                </if>
+                <if test="title != null and title != '' ">
+                    AND title LIKE CONCAT('%',#{title},'%')
+                </if>
+            </where>
+            ORDER BY
+                create_time DESC
+        </select>
 </mapper>
