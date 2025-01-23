@@ -32,5 +32,10 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
+        <!-- foj-common-core -->
+        <dependency>
+            <groupId>com.fancier.foj</groupId>
+            <artifactId>foj-common-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

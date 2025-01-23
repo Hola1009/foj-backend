@@ -3,7 +3,7 @@ package com.fancier.foj.common.security.interceptor;
 import cn.hutool.core.util.StrUtil;
 import com.fancier.foj.common.core.constant.HttpConstants;
 import com.fancier.foj.common.core.utils.JwtUtils;
-import com.fancier.foj.common.mybatis.utils.UserHolder;
+import com.fancier.foj.common.core.utils.UserHolder;
 import com.fancier.foj.common.security.service.TokenService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package com.fancier.foj.common.mybatis.utils;
+package com.fancier.foj.common.core.utils;
 
 /**
  * @author <a href="https://github.com/hola1009">fancier</a>
