@@ -33,7 +33,7 @@
             left join
                 sys_user ts
             on
-            tq.create_by = ts.id
+                tq.create_by = ts.id
             <where>
                 <if test="difficulty != null ">
                     AND difficulty = #{difficulty}
