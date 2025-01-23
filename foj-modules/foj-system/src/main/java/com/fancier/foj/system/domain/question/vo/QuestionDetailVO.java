@@ -14,8 +14,6 @@ public class QuestionDetailVO {
 
     private Integer difficulty;
 
-    private String description;
-
     private Integer timeLimit;
 
     private Integer spaceLimit;

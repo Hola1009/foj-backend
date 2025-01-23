@@ -25,7 +25,6 @@ create table if not exists `tb_question` (
     `id` bigint(20) unsigned not null comment '主键',
     `title` varchar(50) not null comment '标题',
     `difficulty` tinyint(1) not null comment '难度',
-    `description` text not null comment '描述',
     `time_limit` int(11) not null comment '时间限制',
     `space_limit` int(11) not null comment '空间限制',
     `content` varchar(1000) not null comment '题目内容',

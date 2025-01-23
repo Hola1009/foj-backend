@@ -8,7 +8,6 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>
             <result property="difficulty" column="difficulty" jdbcType="TINYINT"/>
-            <result property="description" column="description" jdbcType="VARCHAR"/>
             <result property="timeLimit" column="time_limit" jdbcType="INTEGER"/>
             <result property="spaceLimit" column="space_limit" jdbcType="INTEGER"/>
             <result property="content" column="content" jdbcType="VARCHAR"/>
