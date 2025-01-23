@@ -10,6 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class QuestionDTO {
+    private Long id;
+
     @NotNull(message = "题目标题不能为空")
     private String title;
 

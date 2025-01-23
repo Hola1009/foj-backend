@@ -1,7 +1,6 @@
 package com.fancier.foj.system.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import com.fancier.foj.common.core.controller.BaseController;
 import com.fancier.foj.common.core.domain.vo.PageResult;
@@ -10,6 +9,7 @@ import com.fancier.foj.common.security.utils.ThrowUtils;
 import com.fancier.foj.system.domain.question.Question;
 import com.fancier.foj.system.domain.question.dto.QuestionDTO;
 import com.fancier.foj.system.domain.question.dto.QuestionQueryDTO;
+import com.fancier.foj.system.domain.question.vo.QuestionDetailVO;
 import com.fancier.foj.system.domain.question.vo.QuestionVO;
 import com.fancier.foj.system.service.QuestionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,16 +43,38 @@ public class QuestionController extends BaseController {
     @PostMapping("/add")
     @Operation(summary = "添加题目")
     public Result add(@RequestBody @Validated QuestionDTO questionDTO) {
-
-        // 校验题目是否存在
-        LambdaQueryWrapper<Question> wrapper = new LambdaQueryWrapper<Question>()
-                .eq(Question::getTitle, questionDTO.getTitle());
-        Question one = questionService.getOne(wrapper);
-        ThrowUtils.throwIf(Objects.nonNull(one), ResultCode.FAILED_ALREADY_EXISTS);
+        // 校验该标题是否存在
+        questionService.validate(questionDTO);
 
         Question question = new Question();
 
         BeanUtil.copyProperties(questionDTO, question);
+
         return toResult(questionService.save(question));
+    }
+    @PutMapping("/edit")
+    @Operation(summary = "修改题目")
+    public Result edit(@RequestBody QuestionDTO questionDTO) {
+
+        Boolean edited = questionService.edit(questionDTO);
+
+        return toResult(edited);
+    }
+    @GetMapping("/detail")
+    public Result getDetail(Long questionId) {
+
+        Question question = questionService.getById(questionId);
+        ThrowUtils.throwIf(Objects.isNull(question), ResultCode.FAILED_NOT_EXISTS);
+
+        QuestionDetailVO questionDetailVO = new QuestionDetailVO();
+        BeanUtil.copyProperties(question, questionDetailVO);
+
+        return Result.success(question);
+    }
+
+    @DeleteMapping("/{questionId}")
+    @Operation(summary = "删除题目", description = "通过题目id删除题目")
+    public Result delete(@PathVariable Long questionId) {
+        return toResult(questionService.removeById(questionId));
     }
 }

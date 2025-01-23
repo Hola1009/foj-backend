@@ -1,7 +1,13 @@
 package com.fancier.foj.system.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fancier.foj.common.core.constant.enums.ResultCode;
+import com.fancier.foj.common.security.utils.ThrowUtils;
 import com.fancier.foj.system.domain.question.Question;
+import com.fancier.foj.system.domain.question.dto.QuestionDTO;
 import com.fancier.foj.system.domain.question.dto.QuestionQueryDTO;
 import com.fancier.foj.system.domain.question.vo.QuestionVO;
 import com.fancier.foj.system.mapper.QuestionMapper;
@@ -11,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
 * @author Fanfan
@@ -35,6 +42,35 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question>
 
         return questionMapper.selectQuestionList(questionQueryDTO.getTitle(),
                 questionQueryDTO.getDifficulty());
+    }
+
+    @Override
+    public Boolean edit(QuestionDTO questionDTO) {
+        Question question = getById(questionDTO.getId());
+        ThrowUtils.throwIf(Objects.isNull(question), ResultCode.FAILED_NOT_EXISTS);
+
+        // 如果标题不为空，并且与数据库中的标题不一致，则校验题目是否存在
+        if (StrUtil.isNotEmpty(questionDTO.getTitle())
+                && !question.getTitle().equals(questionDTO.getTitle())) {
+            validate(questionDTO);
+        }
+
+        BeanUtil.copyProperties(questionDTO, question);
+
+        return updateById(question);
+    }
+
+    /**
+     * 根据标题校验题目是否存在
+     */
+    @Override
+    public void validate(QuestionDTO questionDTO) {
+        LambdaQueryWrapper<Question> wrapper = new LambdaQueryWrapper<Question>()
+                .eq(!StrUtil.isNotEmpty(questionDTO.getTitle().trim()),
+                        Question::getTitle, questionDTO.getTitle());
+        // 校验题目是否存在
+        Question one = getOne(wrapper);
+        ThrowUtils.throwIf(Objects.nonNull(one), ResultCode.FAILED_ALREADY_EXISTS);
     }
 }
 

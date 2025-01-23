@@ -3,6 +3,7 @@ package com.fancier.foj.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fancier.foj.system.domain.question.Question;
+import com.fancier.foj.system.domain.question.dto.QuestionDTO;
 import com.fancier.foj.system.domain.question.dto.QuestionQueryDTO;
 import com.fancier.foj.system.domain.question.vo.QuestionVO;
 
@@ -15,4 +16,8 @@ import java.util.List;
 */
 public interface QuestionService extends IService<Question> {
     List<QuestionVO> getList(QuestionQueryDTO questionQueryDTO);
+
+    Boolean edit(QuestionDTO questionDTO);
+
+    void validate(QuestionDTO questionDTO);
 }
