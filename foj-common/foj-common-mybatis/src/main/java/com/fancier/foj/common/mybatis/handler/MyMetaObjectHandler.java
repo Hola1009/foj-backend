@@ -1,7 +1,7 @@
 package com.fancier.foj.common.mybatis.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.fancier.foj.common.mybatis.utils.UserHolder;
+import com.fancier.foj.common.core.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
