@@ -27,7 +27,7 @@ public class QuestionController extends BaseController {
     private final QuestionService questionService;
 
     @GetMapping("/list")
-    @Operation(summary = "登录", description = "根据提供信息登录")
+    @Operation(summary = "题目分页查询", description = "题目分页查询")
     public PageResult list(@RequestBody QuestionQueryDTO questionQueryDTO) {
         List<QuestionVO> list = questionService.getList(questionQueryDTO);
         return toPageResult(list);
