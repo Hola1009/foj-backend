@@ -34,7 +34,7 @@ public class QuestionController extends BaseController {
 
     @GetMapping("/list")
     @Operation(summary = "题目分页查询", description = "题目分页查询")
-    public PageResult list(@RequestBody QuestionQueryDTO questionQueryDTO) {
+    public PageResult list(QuestionQueryDTO questionQueryDTO) {
         List<QuestionVO> list = questionService.getList(questionQueryDTO);
         return toPageResult(list);
     }
