@@ -66,8 +66,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question>
     @Override
     public void validate(QuestionDTO questionDTO) {
         LambdaQueryWrapper<Question> wrapper = new LambdaQueryWrapper<Question>()
-                .eq(!StrUtil.isNotEmpty(questionDTO.getTitle().trim()),
-                        Question::getTitle, questionDTO.getTitle());
+                .eq(Question::getTitle, questionDTO.getTitle().trim());
         // 校验题目是否存在
         Question one = getOne(wrapper);
         ThrowUtils.throwIf(Objects.nonNull(one), ResultCode.FAILED_ALREADY_EXISTS);
