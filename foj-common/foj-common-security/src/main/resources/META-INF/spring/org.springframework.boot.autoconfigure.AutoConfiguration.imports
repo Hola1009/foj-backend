@@ -2,3 +2,4 @@ com.fancier.foj.common.security.handler.GlobalExceptionHandler
 com.fancier.foj.common.security.service.TokenService
 com.fancier.foj.common.security.config.WebMvcConfigure
 com.fancier.foj.common.security.interceptor.TokenInterceptor
+com.fancier.foj.common.security.config.WebConfig
