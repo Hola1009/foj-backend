@@ -1,5 +1,6 @@
 package com.fancier.foj.system.domain.exam;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fancier.foj.common.core.domain.BaseEntity;
@@ -20,7 +21,7 @@ public class Exam extends BaseEntity implements Serializable {
     /**
      * 主键
      */
-    @TableId
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     /**
