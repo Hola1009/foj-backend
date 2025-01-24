@@ -42,3 +42,30 @@ create table if not exists `tb_question` (
     `is_deleted` tinyint(1) not null default 0 comment '是否删除',
     primary key (`id`)
 ) comment = '题目表';
+
+create table if not exists `tb_exam` (
+    `id` bigint(20) unsigned not null comment '主键',
+    `title` varchar(50) not null comment '标题',
+    `start_time` datetime not null comment '开始时间',
+    `end_time` datetime not null comment '结束时间',
+    `status` tinyint(1) not null default 0 comment '是否发布 0: 未发布 1: 已发布',
+
+
+    `create_time` datetime not null default current_timestamp comment '创建时间',
+    `update_time` datetime not null default current_timestamp on update current_timestamp comment '更新时间',
+
+    `create_by` bigint(20) unsigned not null default 1009 comment '创建者',
+    `update_by` bigint(20) unsigned not null default 1009 comment '更新者',
+
+    `is_deleted` tinyint(1) not null default 0 comment '是否删除',
+    primary key (`id`)
+) comment = '竞赛表';
+
+
+create table if not exists `tb_exam_question` (
+    `id` bigint(20) unsigned not null comment '主键',
+    `exam_id` bigint(20) unsigned not null comment '竞赛id',
+    `question_id` bigint(20) unsigned not null comment '题目id',
+    `question_order` int(11) not null comment '题目顺序',
+    primary key (`id`)
+) comment = '竞赛题目表';
