@@ -1,5 +1,7 @@
 package com.fancier.foj.common.security.config;
 
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
@@ -21,6 +23,13 @@ public class WebConfig {
              LocalDateTimeSerializer serializer = new LocalDateTimeSerializer(formatter);
              jacksonObjectMapperBuilder.serializerByType(LocalDateTime.class, serializer);
              jacksonObjectMapperBuilder.deserializerByType(LocalDateTime.class, deserializer);
+             // 创建一个 SimpleModule
+             SimpleModule module = new SimpleModule();
+             // 将 long 类型和 Long 类型序列化为字符串
+             module.addSerializer(Long.class, ToStringSerializer.instance);
+             module.addSerializer(long.class, ToStringSerializer.instance);
+             // 注册模块到 ObjectMapper 中
+             jacksonObjectMapperBuilder.modules(module);
          };
      }
 }

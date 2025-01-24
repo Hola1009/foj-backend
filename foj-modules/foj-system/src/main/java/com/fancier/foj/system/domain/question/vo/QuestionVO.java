@@ -1,7 +1,5 @@
 package com.fancier.foj.system.domain.question.vo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class QuestionVO {
-    // 解决精度丢失问题
-    @JsonSerialize(using = ToStringSerializer.class)
+
     private Long id;
 
     private String title;
