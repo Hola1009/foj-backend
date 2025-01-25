@@ -34,11 +34,11 @@
         on
             te.create_by = ts.id
         <where>
-            <if test="end_time != null and end_time != '' ">
-                AND te.end_time &lt;= #{end_time}
+            <if test="endTime != null and endTime != '' ">
+                AND te.end_time &lt;= #{endTime}
             </if>
-            <if test="start_time != null and start_time != ''">
-                AND te.start_time &gt;= #{start_time}
+            <if test="startTime != null and startTime != ''">
+                AND te.start_time &gt;= #{startTime}
             </if>
             <if test="status != null ">
                 AND te.status = #{status}
