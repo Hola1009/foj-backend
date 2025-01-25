@@ -3,6 +3,10 @@ package com.fancier.foj.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.fancier.foj.system.domain.exam.Exam;
+import com.fancier.foj.system.domain.exam.dto.ExamQueryDTO;
+import com.fancier.foj.system.domain.exam.vo.ExamVO;
+
+import java.util.List;
 
 /**
 * @author Fanfan
@@ -12,6 +16,7 @@ import com.fancier.foj.system.domain.exam.Exam;
 */
 public interface ExamMapper extends BaseMapper<Exam> {
 
+    List<ExamVO> getExamList(ExamQueryDTO queryDTO);
 }
 
 

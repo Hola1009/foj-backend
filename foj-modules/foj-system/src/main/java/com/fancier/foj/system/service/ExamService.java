@@ -3,6 +3,10 @@ package com.fancier.foj.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fancier.foj.system.domain.exam.Exam;
+import com.fancier.foj.system.domain.exam.dto.ExamQueryDTO;
+import com.fancier.foj.system.domain.exam.vo.ExamVO;
+
+import java.util.List;
 
 /**
 * @author Fancier
@@ -10,5 +14,5 @@ import com.fancier.foj.system.domain.exam.Exam;
 * @createDate 2025-01-25 07:13:02
 */
 public interface ExamService extends IService<Exam> {
-
+    List<ExamVO> getList(ExamQueryDTO examQueryDTO);
 }

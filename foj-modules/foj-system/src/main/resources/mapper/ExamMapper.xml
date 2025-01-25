@@ -17,10 +17,37 @@
             <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,title,start_time,
-        end_time,status,create_time,
-        update_time,create_by,update_by,
-        is_deleted
-    </sql>
+
+    <select id="getExamList" resultType="com.fancier.foj.system.domain.exam.vo.ExamVO">
+        SELECT
+            te.id,
+            te.title,
+            te.start_time,
+            te.end_time,
+            te.status,
+            ts.username as creator_name,
+            te.create_time
+        FROM
+            tb_exam te
+        left join
+            sys_user ts
+        on
+            te.create_by = ts.id
+        <where>
+            <if test="end_time != null and end_time != '' ">
+                AND te.end_time &lt;= #{end_time}
+            </if>
+            <if test="start_time != null and start_time != ''">
+                AND te.start_time &gt;= #{start_time}
+            </if>
+            <if test="status != null ">
+                AND te.status = #{status}
+            </if>
+            <if test="title != null and title != '' ">
+                AND te.title LIKE CONCAT('%',#{title},'%')
+            </if>
+        </where>
+        ORDER BY
+            create_time DESC
+    </select>
 </mapper>
