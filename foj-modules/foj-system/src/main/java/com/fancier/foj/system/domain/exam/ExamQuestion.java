@@ -3,20 +3,17 @@ package com.fancier.foj.system.domain.exam;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fancier.foj.common.core.domain.BaseEntity;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
  * 竞赛题目表
  * @TableName tb_exam_question
  */
-@EqualsAndHashCode(callSuper = true)
 @TableName(value ="tb_exam_question")
 @Data
-public class ExamQuestion extends BaseEntity implements Serializable {
+@Builder
+public class ExamQuestion  {
     /**
      * 主键
      */

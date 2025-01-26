@@ -3,6 +3,8 @@ package com.fancier.foj.system.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.fancier.foj.system.domain.exam.ExamQuestion;
 
+import java.util.List;
+
 /**
 * @author Fancier
 * @description 针对表【tb_exam_question(竞赛题目表)】的数据库操作Mapper
@@ -10,7 +12,7 @@ import com.fancier.foj.system.domain.exam.ExamQuestion;
 * @Entity generator.domain.ExamQuestion
 */
 public interface ExamQuestionMapper extends BaseMapper<ExamQuestion> {
-
+    boolean addBatch(List<ExamQuestion> examQuestions);
 }
 
 

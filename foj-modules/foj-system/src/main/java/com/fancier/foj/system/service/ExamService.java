@@ -3,6 +3,8 @@ package com.fancier.foj.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fancier.foj.system.domain.exam.Exam;
+import com.fancier.foj.system.domain.exam.dto.ExamQuestionDTO;
+import com.fancier.foj.system.domain.exam.dto.ExamDTO;
 import com.fancier.foj.system.domain.exam.dto.ExamQueryDTO;
 import com.fancier.foj.system.domain.exam.vo.ExamVO;
 
@@ -15,4 +17,8 @@ import java.util.List;
 */
 public interface ExamService extends IService<Exam> {
     List<ExamVO> getList(ExamQueryDTO examQueryDTO);
+
+    Boolean addExamQuestion(ExamQuestionDTO dto);
+
+    void validate(ExamDTO dto);
 }

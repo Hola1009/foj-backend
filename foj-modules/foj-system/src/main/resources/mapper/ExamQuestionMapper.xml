@@ -11,8 +11,11 @@
             <result property="questionOrder" column="question_order" jdbcType="INTEGER"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,exam_id,question_id,
-        `questionOrder`
-    </sql>
+    <insert id="addBatch">
+        insert into tb_exam_question (id, exam_id,question_id,question_order)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.examId},#{item.questionId},#{item.questionOrder})
+        </foreach>
+    </insert>
 </mapper>

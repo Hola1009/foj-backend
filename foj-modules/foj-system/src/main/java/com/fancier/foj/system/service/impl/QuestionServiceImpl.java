@@ -69,6 +69,10 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question>
                 .eq(Question::getTitle, questionDTO.getTitle().trim());
         // 校验题目是否存在
         Question one = getOne(wrapper);
+
+        if (Objects.nonNull(one) && one.getId().equals(questionDTO.getId())) {
+            return;
+        }
         ThrowUtils.throwIf(Objects.nonNull(one), ResultCode.FAILED_ALREADY_EXISTS);
     }
 }
