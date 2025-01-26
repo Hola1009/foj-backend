@@ -23,7 +23,8 @@ public class ExamQuestionServiceImpl extends ServiceImpl<ExamQuestionMapper, Exa
     @Override
     public List<Long> getByExamId(Long id) {
         List<ExamQuestion> examQuestions = list(new LambdaQueryWrapper<ExamQuestion>()
-                .eq(ExamQuestion::getExamId, id));
+                .eq(ExamQuestion::getExamId, id)
+                .orderByAsc(ExamQuestion::getQuestionOrder));
 
         return examQuestions.stream()
                 .map(ExamQuestion::getQuestionId).toList();
