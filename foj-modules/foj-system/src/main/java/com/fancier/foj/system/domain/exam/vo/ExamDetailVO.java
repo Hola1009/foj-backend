@@ -1,7 +1,6 @@
 package com.fancier.foj.system.domain.exam.vo;
 
 import com.fancier.foj.system.domain.question.vo.QuestionVO;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +12,6 @@ import java.util.List;
  **/
 @Getter
 @Setter
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExamDetailVO {
     /**
      * 标题

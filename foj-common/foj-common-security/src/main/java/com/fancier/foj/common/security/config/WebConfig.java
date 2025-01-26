@@ -30,6 +30,10 @@ public class WebConfig {
              module.addSerializer(long.class, ToStringSerializer.instance);
              // 注册模块到 ObjectMapper 中
              jacksonObjectMapperBuilder.modules(module);
+
+             // 配置不序列化空属性
+             jacksonObjectMapperBuilder
+                     .serializationInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL);
          };
      }
 }
