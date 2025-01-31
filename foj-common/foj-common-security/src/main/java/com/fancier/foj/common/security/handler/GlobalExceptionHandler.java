@@ -66,9 +66,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BindException.class)
-    public Result handleBindException(BindException e) {
+    public Result handleBindException(BindException e, HttpServletRequest request) {
         log .error(e.getMessage());
         String message = join(e.getAllErrors(), DefaultMessageSourceResolvable::getDefaultMessage);
+        String requestURI = request.getRequestURI();
+        log.error("请求地址'{}',发⽣异常.", requestURI, e);
         return Result.failure(ResultCode.FAILED_PARAMS_VALIDATE.getCode(), message);
     }
     private <E> String join(Collection<E> collection, Function<E, String> function) {
