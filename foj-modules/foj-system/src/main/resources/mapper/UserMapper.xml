@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fancier.foj.system.mapper.UserMapper">
+
+        <resultMap id="BaseResultMap" type="com.fancier.foj.system.domain.user.User">
+                <id property="id" column="id" jdbcType="BIGINT"/>
+                <result property="username" column="username" jdbcType="VARCHAR"/>
+                <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+                <result property="sex" column="sex" jdbcType="TINYINT"/>
+                <result property="phone" column="phone" jdbcType="VARCHAR"/>
+                <result property="code" column="code" jdbcType="VARCHAR"/>
+                <result property="email" column="email" jdbcType="VARCHAR"/>
+                <result property="wechat" column="wechat" jdbcType="VARCHAR"/>
+                <result property="school" column="school" jdbcType="VARCHAR"/>
+                <result property="major" column="major" jdbcType="VARCHAR"/>
+                <result property="introduce" column="introduce" jdbcType="VARCHAR"/>
+                <result property="status" column="status" jdbcType="TINYINT"/>
+                <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+                <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+                <result property="createBy" column="create_by" jdbcType="BIGINT"/>
+                <result property="updateBy" column="update_by" jdbcType="BIGINT"/>
+                <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+        </resultMap>
+        <select id="getUserList" resultType="com.fancier.foj.system.domain.user.vo.UserVO">
+                select
+                    id,username,avatar,sex,phone,email,wechat,school,major,introduce,status
+                from
+                    tb_user
+                <where>
+                    <if test="username != null and username != '' ">
+                        AND username = #{username}
+                    </if>
+                    <if test="userId != null ">
+                        AND id = #{userId}
+                    </if>
+                </where>
+                ORDER BY
+                    create_time DESC
+
+        </select>
+
+</mapper>

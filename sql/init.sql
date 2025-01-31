@@ -69,3 +69,27 @@ create table if not exists `tb_exam_question` (
     `question_order` int(11) not null comment '题目顺序',
     primary key (`id`)
 ) comment = '竞赛题目表';
+
+create table if not exists `tb_user` (
+    `id` bigint(20) unsigned not null comment '主键',
+    `username` varchar(50) not null comment '用户名',
+    `avatar` varchar(100) comment '头像',
+    `sex` tinyint(1) not null default 0 comment '性别 0: 男 1: 女',
+    `phone` varchar(20) comment '手机号',
+    `code` varchar(20) comment '验证码',
+    `email` varchar(50) comment '邮箱地址',
+    `wechat` varchar(50) comment '微信号',
+    `school` varchar(50) comment '学校',
+    `major` varchar(50) comment '专业',
+    `introduce` varchar(500) comment '个人介绍',
+    `status` tinyint(1) not null default 0 comment '状态 0: 正常 1: 禁用',
+
+    `create_time` datetime not null default current_timestamp comment '创建时间',
+    `update_time` datetime not null default current_timestamp on update current_timestamp comment '更新时间',
+
+    `create_by` bigint(20) unsigned not null default 1009 comment '创建者',
+    `update_by` bigint(20) unsigned not null default 1009 comment '更新者',
+
+    `is_deleted` tinyint(1) not null default 0 comment '是否删除',
+    primary key (`id`)
+) comment = '普通用户表';

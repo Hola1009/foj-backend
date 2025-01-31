@@ -22,7 +22,8 @@ public enum ResultCode {
     FAILED_USER_BANNED (3104, "您已被列⼊⿊名单, 请联系管理员."),
     EXAM_START_TIME_BEFORE_CURRENT_TIME(3201, "开始时间不能早于当前时间"),
     EXAM_START_TIME_AFTER_END_TIME(3202, "开始晚于结束时间"),
-    FAILED_EXAM_IN_PROGRESS(3203, "比赛正在进行中");
+    FAILED_EXAM_IN_PROGRESS(3203, "比赛正在进行中"),
+    FAILED_STATUS_NOT_EXISTS(3204, "状态不存在");
 
     /**
      * 状态码
