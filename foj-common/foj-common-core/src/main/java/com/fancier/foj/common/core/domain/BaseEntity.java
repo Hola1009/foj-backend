@@ -12,13 +12,13 @@ public class BaseEntity {
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT)
     private Long createBy;
 
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
 
     private Integer isDeleted;
