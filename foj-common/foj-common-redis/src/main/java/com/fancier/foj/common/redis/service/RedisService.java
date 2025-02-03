@@ -190,5 +190,9 @@ public class RedisService {
     public Long getExpire(final String key, final TimeUnit unit) {
         return redisTemplate.getExpire(key, unit);
     }
+
+    public <K, V> void multiSet(Map<? extends K, ? extends V> map) {
+        redisTemplate.opsForValue().multiSet(map);
+    }
 }
 
