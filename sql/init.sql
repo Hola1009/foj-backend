@@ -93,3 +93,20 @@ create table if not exists `tb_user` (
     `is_deleted` tinyint(1) not null default 0 comment '是否删除',
     primary key (`id`)
 ) comment = '普通用户表';
+
+create table if not exists `tb_user_exam` (
+    `id` bigint(20) unsigned not null comment '主键',
+    `user_id` bigint(20) unsigned not null comment '用户id',
+    `exam_id` bigint(20) unsigned not null comment '竞赛id',
+    `score` int(11) not null default 0 comment '得分',
+    `submit_time` datetime not null default current_timestamp comment '提交时间',
+
+    `create_time` datetime not null default current_timestamp comment '创建时间',
+    `update_time` datetime not null default current_timestamp on update current_timestamp comment '更新时间',
+
+    `create_by` bigint(20) unsigned not null default 1009 comment '创建者',
+    `update_by` bigint(20) unsigned not null default 1009 comment '更新者',
+
+    `is_deleted` tinyint(1) not null default 0 comment '是否删除',
+    primary key (`id`)
+)
