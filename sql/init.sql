@@ -131,4 +131,35 @@ create table if not exists `tb_user_submit`(
 
     `is_deleted` tinyint(1) not null default 0 comment '是否删除',
     primary key (`id`)
-)
+);
+
+create table if not exists `tb_message`(
+    `id` bigint(20) unsigned not null comment '主键',
+    `text_id` bigint(20) unsigned not null comment '消息id',
+    `send_id` bigint(20) unsigned not null comment '发送者id',
+    `rec_id` bigint(20) unsigned not null comment '接收者id',
+
+    `create_time` datetime not null default current_timestamp comment '创建时间',
+    `update_time` datetime not null default current_timestamp on update current_timestamp comment '更新时间',
+
+    `create_by` bigint(20) unsigned not null default 1009 comment '创建者',
+    `update_by` bigint(20) unsigned not null default 1009 comment '更新者',
+
+    `is_deleted` tinyint(1) not null default 0 comment '是否删除',
+    primary key (`id`)
+);
+
+create table if not exists `tb_message_text`(
+    `id` bigint(20) unsigned not null comment '主键',
+    `message_title` varchar(50) not null comment '消息标题',
+    `message_content` varchar(500) not null comment '消息内容',
+
+    `create_time` datetime not null default current_timestamp comment '创建时间',
+    `update_time` datetime not null default current_timestamp on update current_timestamp comment '更新时间',
+
+    `create_by` bigint(20) unsigned not null default 1009 comment '创建者',
+    `update_by` bigint(20) unsigned not null default 1009 comment '更新者',
+
+    `is_deleted` tinyint(1) not null default 0 comment '是否删除',
+    primary key (`id`)
+);
