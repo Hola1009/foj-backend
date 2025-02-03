@@ -7,40 +7,34 @@ import com.fancier.foj.common.core.domain.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
-
 /**
  * 
- * @TableName tb_user_exam
+ * @TableName tb_user_submit
  */
 @EqualsAndHashCode(callSuper = true)
-@TableName(value ="tb_user_exam")
+@TableName(value ="tb_user_submit")
 @Data
-public class UserExam extends BaseEntity {
-    /**
-     * 主键
-     */
+public class UserSubmit extends BaseEntity {
+
     @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
-    /**
-     * 用户id
-     */
     private Long userId;
 
-    /**
-     * 竞赛id
-     */
+    private Long questionId;
+
     private Long examId;
 
-    /**
-     * 得分
-     */
+    private String programType;
+
+    private String code;
+
+    private Integer pass;
+
     private Integer score;
 
-    /**
-     * 提交时间
-     */
-    private LocalDateTime submitTime;
+    private String exeMessage;
+
+    private String caseJudgeRes;
 
 }

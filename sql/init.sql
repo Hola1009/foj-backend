@@ -109,4 +109,26 @@ create table if not exists `tb_user_exam` (
 
     `is_deleted` tinyint(1) not null default 0 comment '是否删除',
     primary key (`id`)
+);
+
+create table if not exists `tb_user_submit`(
+    `id` bigint(20) unsigned not null comment '主键',
+    `user_id` bigint(20) unsigned not null comment '用户id',
+    `question_id` bigint(20) unsigned not null comment '题目id',
+    `exam_id` bigint(20) unsigned comment '竞赛id',
+    `program_type` varchar(50) not null comment '编程语言',
+    `code` text not null comment '代码',
+    `pass` tinyint(1) not null default 0 comment '是否通过 0: 未通过 1: 通过',
+    `score` int(11) not null default 0 comment '得分',
+    `exe_message` varchar(500) comment '执行信息',
+    `case_judge_res` varchar(500) comment '测试用例结果',
+
+    `create_time` datetime not null default current_timestamp comment '创建时间',
+    `update_time` datetime not null default current_timestamp on update current_timestamp comment '更新时间',
+
+    `create_by` bigint(20) unsigned not null default 1009 comment '创建者',
+    `update_by` bigint(20) unsigned not null default 1009 comment '更新者',
+
+    `is_deleted` tinyint(1) not null default 0 comment '是否删除',
+    primary key (`id`)
 )
