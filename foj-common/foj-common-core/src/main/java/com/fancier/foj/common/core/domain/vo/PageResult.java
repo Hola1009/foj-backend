@@ -1,5 +1,6 @@
 package com.fancier.foj.common.core.domain.vo;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.fancier.foj.common.core.constant.enums.ResultCode;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +41,9 @@ public class PageResult {
     }
 
     public static PageResult success(List<?> rows, long total) {
+        if (CollectionUtil.isEmpty(rows)) {
+            return empty();
+        }
         return PageResult.builder()
                 .code(ResultCode.SUCCESS.getCode())
                 .message(ResultCode.SUCCESS.getMessage())

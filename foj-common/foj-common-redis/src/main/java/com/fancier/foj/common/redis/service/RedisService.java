@@ -194,5 +194,9 @@ public class RedisService {
     public <K, V> void multiSet(Map<? extends K, ? extends V> map) {
         redisTemplate.opsForValue().multiSet(map);
     }
+
+    public void increment(final String key) {
+        redisTemplate.opsForValue().increment(key);
+    }
 }
 

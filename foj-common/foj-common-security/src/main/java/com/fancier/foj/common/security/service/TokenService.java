@@ -89,4 +89,11 @@ public class TokenService {
 
         return CacheConstants.LOGIN_TOKEN_PREFIX + userId;
     }
+
+    public void refreshLoginUser(String username, String userId) {
+        String tokenKey = CacheConstants.LOGIN_TOKEN_PREFIX + userId;
+        LoginUser loginUser = redisService.getCacheObject(tokenKey, LoginUser.class);
+        loginUser.setUsername(username);
+        redisService.setCacheObject(tokenKey, loginUser);
+    }
 }

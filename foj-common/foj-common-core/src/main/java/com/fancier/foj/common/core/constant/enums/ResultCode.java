@@ -23,7 +23,15 @@ public enum ResultCode {
     EXAM_START_TIME_BEFORE_CURRENT_TIME(3201, "开始时间不能早于当前时间"),
     EXAM_START_TIME_AFTER_END_TIME(3202, "开始晚于结束时间"),
     FAILED_EXAM_IN_PROGRESS(3203, "比赛正在进行中"),
-    FAILED_STATUS_NOT_EXISTS(3204, "状态不存在");
+    FAILED_STATUS_NOT_EXISTS(3204, "状态不存在"),
+    FAILED_USER_PHONE(3205, "你输入的手机号有误"),
+    FAILED_TIME_LIMIT(3207, "当天请求次数已达到上限"),
+    FAILED_FREQUENT(3208, "操作频繁，请稍后重试"),
+    FAILED_INVALID_CODE(3209, "无效验证码"),
+    EXAM_STARTED(3210, "竞赛已经开始，无法进行操作"),
+    USER_EXAM_HAS_ENTER(3211, "用户已经报过名，无需重复报名"),
+
+    ;
 
     /**
      * 状态码

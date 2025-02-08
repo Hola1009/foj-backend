@@ -11,6 +11,8 @@ public interface CacheConstants {
     String EXAM_RANK_LIST = "exam:rank:list:";
     String EXAM_UNFINISHED_LIST = "exam:unfinished:list:";
     String EXAM_HISTORY_LIST = "exam:history:list:";
+    String PHONE_CODE_KEY = "phone:code:";
+    String CODE_TIME_KEY = "code:time:";
     Long EXP = 720L;
 
     Long REFRESH_TIME = 180L;
